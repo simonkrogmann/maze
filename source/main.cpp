@@ -18,8 +18,8 @@ int main(int argc, char* argv[])
     });
     config.load(argc, argv);
 
-    Shader::id = config.valueUInt("shader-id") + 100;
-    config.setValue("shader-id", Shader::id);
+    util::Shader::id = config.valueUInt("shader-id") + 100;
+    config.setValue("shader-id", util::Shader::id);
 
     util::Window w;
 
@@ -39,6 +39,6 @@ int main(int argc, char* argv[])
     w.setRenderer(std::move(renderer));
     w.loop();
 
-    config.setValue("shader-id", Shader::id);
+    config.setValue("shader-id", util::Shader::id);
     return 0;
 }

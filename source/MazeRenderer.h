@@ -1,6 +1,7 @@
 #pragma once
 
 #include <utilgpu/gl/Renderer.h>
+#include <utilgpu/gl/GroundPlane.h>
 
 class Maze;
 
@@ -19,4 +20,5 @@ protected:
 
 private:
     std::unique_ptr<Maze> m_maze;
+    util::GroundPlane m_groundPlane;
 };
