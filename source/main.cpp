@@ -13,8 +13,7 @@ int main(int argc, char* argv[])
 {
     util::Config config{"simonkrogmann", "procedural-viewer"};
     config.setDefaults({
-        {"gl-version", "best"},
-        {"fullscreen", "false"},
+        {"gl-version", "best"}, {"fullscreen", "false"},
     });
     config.load(argc, argv);
 
@@ -34,8 +33,7 @@ int main(int argc, char* argv[])
     util::glContextInfo();
     w.initAfterGL();
 
-    auto renderer = std::make_unique<MazeRenderer>(
-        std::make_unique<Maze>());
+    auto renderer = std::make_unique<MazeRenderer>(std::make_unique<Maze>());
     w.setRenderer(std::move(renderer));
     w.loop();
 

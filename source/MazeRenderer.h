@@ -1,9 +1,18 @@
 #pragma once
 
+#include <vector>
+
 #include <utilgpu/gl/Renderer.h>
 #include <utilgpu/gl/GroundPlane.h>
+#include <glm/mat4x4.hpp>
 
 class Maze;
+class MazeDrawable;
+
+namespace util
+{
+class Program;
+}
 
 class MazeRenderer : public util::Renderer
 {
@@ -21,4 +30,7 @@ protected:
 private:
     std::unique_ptr<Maze> m_maze;
     util::GroundPlane m_groundPlane;
+    std::unique_ptr<MazeDrawable> m_mazeDrawable;
+    std::unique_ptr<util::Program> m_mazeProgram;
+    std::vector<std::pair<glm::mat4, bool>> m_models;
 };

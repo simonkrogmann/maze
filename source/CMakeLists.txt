@@ -4,11 +4,13 @@ set(sources
     main.cpp
     MazeRenderer.cpp
     Maze.cpp
+    MazeDrawable.cpp
 )
 
 set(includes
     MazeRenderer.h
     Maze.h
+    MazeDrawable.h
 )
 
 set(resources
