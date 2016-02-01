@@ -62,10 +62,10 @@ void MazeRenderer::saveFramebuffers()
 void MazeRenderer::draw(const util::viewport::Viewport& viewport)
 {
     glEnable(GL_DEPTH_TEST);
-    auto view = glm::lookAt(glm::vec3(-1.0, -1.0, 2), glm::vec3(0.0, 0.0, 2),
+    auto view = glm::lookAt(glm::vec3(-1.5, -1.5, 2), glm::vec3(0.0, 0.0, 2),
                             glm::vec3(0.0, 0.0, 1.0));
     auto projection = glm::perspective(
-        89.f, static_cast<float>(viewport.width) / viewport.height, 0.1f,
+        1.1f, static_cast<float>(viewport.width) / viewport.height, 0.1f,
         100.f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     m_groundPlane.setViewProjection(glm::value_ptr(projection * view));

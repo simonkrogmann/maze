@@ -24,6 +24,10 @@ install:
   - cd glfw && mkdir build && cd build && cmake .. -DBUILD_SHARED_LIBS=ON
   - make && sudo make install
   - cd ../..
+  - git clone https://github.com/g-truc/glm.git
+  - cd glm && mkdir build && cd build && cmake ..
+  - make && sudo make install
+  - cd ../..
   - git clone https://github.com/cginternals/glbinding.git
   - cd glbinding && mkdir build && cd build && cmake .. -DOPTION_BUILD_TOOLS=OFF
   - make && sudo make install
@@ -36,6 +40,7 @@ install:
   - cd Linux && ./install
   - cd ..
 before_script:
-  - cppcheck ../viewer
+  - cppcheck ../source
 script:
   - cmake .. && make && make test
+  - glslangValidator ../source/shader/*
