@@ -15,6 +15,11 @@ using namespace gl;
 
 MazeRenderer::MazeRenderer(std::unique_ptr<Maze> maze) : m_maze{std::move(maze)}
 {
+    addDependentPath({"../source/shader/groundplane.frag"});
+    addDependentPath({"../source/shader/wall.vert"});
+    addDependentPath({"../source/shader/wall.geom"});
+    addDependentPath({"../source/shader/wall.frag"});
+    reload();
 }
 
 MazeRenderer::~MazeRenderer()
@@ -23,16 +28,6 @@ MazeRenderer::~MazeRenderer()
 
 void MazeRenderer::init()
 {
-    auto shader =
-        util::Shader::fragment(util::File{"../source/shader/groundplane.frag"});
-    m_groundPlane.addFragmentShader(shader);
-
-    util::Group<util::Shader> shaders(
-        util::Shader::vertex(util::File{"../source/shader/wall.vert"}),
-        util::Shader::geometry(util::File{"../source/shader/wall.geom"}),
-        util::Shader::fragment(util::File{"../source/shader/wall.frag"}));
-    m_mazeProgram = std::make_unique<util::Program>(shaders);
-
     for (const auto& wallSlot : m_maze->walls())
     {
         glm::mat4 model;
@@ -49,6 +44,15 @@ void MazeRenderer::init()
 
 void MazeRenderer::reload()
 {
+    auto shader =
+        util::Shader::fragment(util::File{"../source/shader/groundplane.frag"});
+    m_groundPlane.addFragmentShader(shader);
+
+    util::Group<util::Shader> shaders(
+        util::Shader::vertex(util::File{"../source/shader/wall.vert"}),
+        util::Shader::geometry(util::File{"../source/shader/wall.geom"}),
+        util::Shader::fragment(util::File{"../source/shader/wall.frag"}));
+    m_mazeProgram = std::make_unique<util::Program>(shaders);
 }
 
 void MazeRenderer::saveFramebuffers()
@@ -61,7 +65,7 @@ void MazeRenderer::draw(const util::viewport::Viewport& viewport)
     auto view = glm::lookAt(glm::vec3(-1.0, -1.0, 2), glm::vec3(0.0, 0.0, 2),
                             glm::vec3(0.0, 0.0, 1.0));
     auto projection = glm::perspective(
-        90.f, static_cast<float>(viewport.width / viewport.height), 0.1f,
+        89.f, static_cast<float>(viewport.width) / viewport.height, 0.1f,
         100.f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     m_groundPlane.setViewProjection(glm::value_ptr(projection * view));
