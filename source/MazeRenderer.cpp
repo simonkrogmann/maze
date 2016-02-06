@@ -28,18 +28,7 @@ MazeRenderer::~MazeRenderer()
 
 void MazeRenderer::init()
 {
-    for (const auto& wallSlot : m_maze->walls())
-    {
-        glm::mat4 model;
-        auto wallVector = wallSlot.end - wallSlot.start;
-        model = glm::translate(model, glm::vec3(wallSlot.start, 0.0f));
-        model = glm::rotate(model, -std::atan2(wallVector.y, wallVector.x),
-                            glm::vec3(0.0f, 0.0f, 1.0f));
-        model =
-            glm::scale(model, glm::vec3(1.0f, glm::length(wallVector), 1.0f));
-        m_models.push_back({model, wallSlot.isWall});
-    }
-    m_mazeDrawable = std::make_unique<MazeDrawable>(m_models);
+    m_mazeDrawable = MazeDrawable::generateFrom(m_maze.get());
 }
 
 void MazeRenderer::reload()

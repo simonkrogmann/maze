@@ -1,19 +1,23 @@
 #pragma once
 
 #include <vector>
+#include <memory>
 
 #include <utilgpu/gl/Drawable.h>
 #include <glm/mat4x4.hpp>
 
+class Maze;
+
 class MazeDrawable : public util::Drawable
 {
 public:
-    MazeDrawable(const std::vector<std::pair<glm::mat4, bool>>& models);
+    static std::unique_ptr<MazeDrawable> generateFrom(const Maze* maze);
+
+    MazeDrawable(const std::vector<glm::vec3>& vertices);
     virtual ~MazeDrawable();
 
     virtual void draw() override;
 
 private:
-    std::vector<unsigned char> m_indices;
     unsigned int m_number = 1;
 };

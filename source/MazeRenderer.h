@@ -32,5 +32,4 @@ private:
     util::GroundPlane m_groundPlane;
     std::unique_ptr<MazeDrawable> m_mazeDrawable;
     std::unique_ptr<util::Program> m_mazeProgram;
-    std::vector<std::pair<glm::mat4, bool>> m_models;
 };
