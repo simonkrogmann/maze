@@ -19,5 +19,5 @@ public:
     virtual void draw() override;
 
 private:
-    unsigned int m_number = 1;
+    size_t m_number = 1;
 };

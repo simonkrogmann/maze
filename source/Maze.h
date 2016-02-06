@@ -20,7 +20,7 @@ struct Wall
 class Maze
 {
 public:
-    Maze(const int& size = 100);
+    Maze(const size_t& size = 100);
     ~Maze();
 
     std::vector<Wall> walls() const;
@@ -28,10 +28,10 @@ public:
     bool hasWallAround(const int& x, const int& y) const;
     bool isWall(const int& x, const int& y, Direction direction) const;
 
-    int size() const;
+    size_t size() const;
 
 private:
     std::vector<std::vector<bool>> m_wallsX;
     std::vector<std::vector<bool>> m_wallsY;
-    int m_size;
+    size_t m_size;
 };

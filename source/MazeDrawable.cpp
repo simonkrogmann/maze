@@ -86,7 +86,7 @@ std::unique_ptr<MazeDrawable> MazeDrawable::generateFrom(const Maze* maze)
 
     std::vector<glm::vec3> verticesWallEnd = {
         {-0.05, 0.05, 0}, {0.05, 0.05, 0},  {-0.05, 0.05, 1},
-        {0.05, 0.05, 1},  {-0.05, 0.05, 1}, {0.05, 0.05, 0}, // side
+        {0.05, 0.05, 1},  {-0.05, 0.05, 1}, {0.05, 0.05, 0},  // side
         {-0.05, 0.05, 1}, {0.05, 0.05, 1},  {0, 0, 1},
     };
 
