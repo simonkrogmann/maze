@@ -4,7 +4,7 @@
 #include <memory>
 
 #include <utilgpu/gl/Drawable.h>
-#include <glm/mat4x4.hpp>
+#include <glm/fwd.hpp>
 
 class Maze;
 

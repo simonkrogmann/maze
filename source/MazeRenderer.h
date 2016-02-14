@@ -4,7 +4,7 @@
 
 #include <utilgpu/gl/Renderer.h>
 #include <utilgpu/gl/GroundPlane.h>
-#include <glm/mat4x4.hpp>
+#include <utilgpu/gl/ShadowMap.h>
 
 class Maze;
 class MazeDrawable;
@@ -32,4 +32,5 @@ private:
     util::GroundPlane m_groundPlane;
     std::unique_ptr<MazeDrawable> m_mazeDrawable;
     std::unique_ptr<util::Program> m_mazeProgram;
+    util::ShadowMap m_shadowMap;
 };

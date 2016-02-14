@@ -4,7 +4,7 @@ layout(triangles) in;
 layout(triangle_strip, max_vertices = 3) out;
 
 out vec3 normal;
-out vec3 position;
+out vec3 worldPosition;
 uniform mat4 viewProjection;
 
 void main()
@@ -14,7 +14,7 @@ void main()
     for (int i = 0; i < 3; ++i)
     {
         gl_Position = viewProjection * gl_in[i].gl_Position;
-        position = gl_in[i].gl_Position.xyz;
+        worldPosition = gl_in[i].gl_Position.xyz;
         normal = normalize(triangleNormal);
         EmitVertex();
     }
