@@ -11,7 +11,8 @@
 
 int main(int argc, char* argv[])
 {
-    util::Config config{"simonkrogmann", "procedural-viewer"};
+    std::string applicationName = "maze";
+    util::Config config{"simonkrogmann", applicationName};
     config.setDefaults({
         {"gl-version", "best"}, {"fullscreen", "false"},
     });
@@ -28,7 +29,7 @@ int main(int argc, char* argv[])
         const auto numbers = util::splitNumbers(version, ".");
         w.requestGLVersion(numbers.first, numbers.second);
     }
-    w.init("procedural-viewer", config.value("fullscreen") == "true");
+    w.init(applicationName, config.value("fullscreen") == "true");
     util::glInitialize();
     util::glContextInfo();
     w.initAfterGL();
