@@ -1,4 +1,5 @@
 #version 330
+#extension GL_ARB_shading_language_include : enable
 #extension GL_ARB_explicit_attrib_location : enable
 
 layout(location = 0) out vec4 color;
@@ -6,14 +7,12 @@ in vec3 worldPosition;
 in vec3 normal;
 uniform sampler2D shadowmap;
 uniform mat4 lightViewProjection;
-const float bias = 0.00001;
+
+#include "/shader/shadowmap_lookup.frag"
 
 void main() {
-    vec4 lightPos = lightViewProjection * vec4(worldPosition, 1.0);
-    lightPos /= lightPos.w;
-    lightPos = lightPos * 0.5 + 0.5;
-
-    float shadowed = step(lightPos.z, texture(shadowmap, lightPos.xy).r +  bias);
+    float shadowed = shadowmapLookup(
+        shadowmap, lightViewProjection, worldPosition, normal);
     shadowed = shadowed * 0.5 + 0.5;
 
     vec3 light =  vec3(-2.0, 2.0, 3.0) - worldPosition;

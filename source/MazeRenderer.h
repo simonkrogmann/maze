@@ -31,6 +31,7 @@ private:
     std::unique_ptr<Maze> m_maze;
     util::GroundPlane m_groundPlane;
     std::unique_ptr<MazeDrawable> m_mazeDrawable;
+    std::unique_ptr<util::Program> m_groundPlaneProgram;
     std::unique_ptr<util::Program> m_mazeProgram;
     util::ShadowMap m_shadowMap;
 };
