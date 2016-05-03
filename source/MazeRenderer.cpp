@@ -61,7 +61,7 @@ void MazeRenderer::draw(const util::viewport::Viewport& viewport)
     glEnable(GL_DEPTH_TEST);
 
     const auto lightView =
-        glm::lookAt(glm::vec3(-2.0, 2.5, 2.0), glm::vec3(0.0, 2.5, 2.0),
+        glm::lookAt(glm::vec3(-2.0, 2.5, 2.0), glm::vec3(0.0, 2.6, 2.0),
                     glm::vec3(0.0, 0.0, 1.0));
     const auto lightProjection = glm::perspective(2.0f, 1.0f, 0.1f, 50.f);
     std::vector<util::Model> models;
