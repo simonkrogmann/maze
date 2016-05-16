@@ -1,16 +1,16 @@
 #include "MazeRenderer.h"
 
 #include <glbinding/gl/gl.h>
-#include <utilgpu/gl/Program.h>
-#include <utilgpu/gl/Shader.h>
-#include <utilgpu/gl/Model.h>
-#include <utilgpu/gl/Texture.h>
-#include <utilgpu/gl/viewport.h>
 #include <utilgpu/cpp/Group.h>
 #include <utilgpu/cpp/file.h>
-#include <glm/mat4x4.hpp>
+#include <utilgpu/gl/Model.h>
+#include <utilgpu/gl/Program.h>
+#include <utilgpu/gl/Shader.h>
+#include <utilgpu/gl/Texture.h>
+#include <utilgpu/gl/viewport.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <glm/mat4x4.hpp>
 
 #include "Maze.h"
 #include "MazeDrawable.h"

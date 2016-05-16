@@ -1,7 +1,7 @@
 #pragma once
 
-#include <vector>
 #include <memory>
+#include <vector>
 
 #include <utilgpu/gl/Drawable.h>
 #include <glm/fwd.hpp>

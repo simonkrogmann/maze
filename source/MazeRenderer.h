@@ -2,8 +2,8 @@
 
 #include <vector>
 
-#include <utilgpu/gl/Renderer.h>
 #include <utilgpu/gl/GroundPlane.h>
+#include <utilgpu/gl/Renderer.h>
 #include <utilgpu/gl/ShadowMap.h>
 
 class Maze;

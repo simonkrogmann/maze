@@ -1,24 +1,24 @@
 #include <memory>
 
-#include <utilgpu/qt/Config.h>
-#include <utilgpu/gl/base.h>
-#include <utilgpu/gl/Shader.h>
 #include <utilgpu/cpp/str.h>
+#include <utilgpu/gl/Shader.h>
+#include <utilgpu/gl/base.h>
+#include <utilgpu/qt/Config.h>
 #include <utilgpu/window/Window.h>
 
-#include "MazeRenderer.h"
 #include "Maze.h"
+#include "MazeRenderer.h"
 
 int main(int argc, char* argv[])
 {
     std::string applicationName = "maze";
     util::Config config{"simonkrogmann", applicationName};
     config.setDefaults({
-        {"gl-version", "best"}, {"fullscreen", "false"},
+        {"gl-version", "best"}, {"fullscreen", "false"}, {"shader-id", "0"},
     });
     config.load(argc, argv);
 
-    util::Shader::id = config.valueUInt("shader-id") + 100;
+    util::Shader::id = config.value<unsigned int>("shader-id") + 100;
     config.setValue("shader-id", util::Shader::id);
 
     util::Window w;
@@ -29,7 +29,8 @@ int main(int argc, char* argv[])
         const auto numbers = util::splitNumbers(version, ".");
         w.requestGLVersion(numbers.first, numbers.second);
     }
-    w.init(applicationName, config.value("fullscreen") == "true");
+    w.MSAASamples(4);
+    w.init(applicationName, config.value<bool>("fullscreen"));
     util::glInitialize();
     util::glContextInfo();
     w.initAfterGL();
