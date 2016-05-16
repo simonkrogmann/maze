@@ -59,6 +59,7 @@ void MazeRenderer::saveFramebuffers()
 void MazeRenderer::draw(const util::viewport::Viewport& viewport)
 {
     glEnable(GL_DEPTH_TEST);
+    // glEnable(GL_MULTISAMPLE);
 
     const auto lightView =
         glm::lookAt(glm::vec3(-2.0, 2.5, 2.0), glm::vec3(0.0, 2.6, 2.0),

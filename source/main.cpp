@@ -14,12 +14,9 @@ int main(int argc, char* argv[])
     std::string applicationName = "maze";
     util::Config config{"simonkrogmann", applicationName};
     config.setDefaults({
-        {"gl-version", "best"}, {"fullscreen", "false"}, {"shader-id", "0"},
+        {"gl-version", "best"}, {"fullscreen", "false"},
     });
     config.load(argc, argv);
-
-    util::Shader::id = config.value<unsigned int>("shader-id") + 100;
-    config.setValue("shader-id", util::Shader::id);
 
     util::Window w;
 
@@ -39,6 +36,5 @@ int main(int argc, char* argv[])
     w.setRenderer(std::move(renderer));
     w.loop();
 
-    config.setValue("shader-id", util::Shader::id);
     return 0;
 }
