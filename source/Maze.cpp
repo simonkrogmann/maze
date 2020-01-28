@@ -104,9 +104,7 @@ std::vector<Wall> Maze::wallEnds() const
     return result;
 }
 
-Maze::~Maze()
-{
-}
+Maze::~Maze() {}
 
 size_t Maze::size() const
 {

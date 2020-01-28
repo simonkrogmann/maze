@@ -26,9 +26,7 @@ MazeRenderer::MazeRenderer(std::unique_ptr<Maze> maze) : m_maze{std::move(maze)}
     reload();
 }
 
-MazeRenderer::~MazeRenderer()
-{
-}
+MazeRenderer::~MazeRenderer() {}
 
 void MazeRenderer::init()
 {

@@ -14,7 +14,8 @@ int main(int argc, char* argv[])
     std::string applicationName = "maze";
     util::Config config{"simonkrogmann", applicationName};
     config.setDefaults({
-        {"gl-version", "best"}, {"fullscreen", "false"},
+        {"gl-version", "best"},
+        {"fullscreen", "false"},
     });
     config.load(argc, argv);
 
@@ -28,7 +29,7 @@ int main(int argc, char* argv[])
     }
     w.MSAASamples(4);
     w.init(applicationName, config.value<bool>("fullscreen"));
-    util::glInitialize();
+    util::glInitialize(util::getGLProcAddressPointer());
     util::glContextInfo();
     w.initAfterGL();
 
